@@ -139,7 +139,19 @@ gulp.task('default', gulp.series(
     'serve'
   )
 ));
-
+// ---------------------------------------- build ---------------------------------------//
+gulp.task('build', gulp.series(
+  'clean',
+  gulp.parallel(
+    'copy.image',
+    'copy.fonts',
+    'css',
+    'css.vendor',
+    'webpack',
+    'pug',
+    'copy.readme'
+  )
+));
 // ------------------svg sprites------------------------------------------------------------//
 gulp.task('sprite:svg', function() {
   return gulp.src('./src/images/svg-sprites/*.svg')
