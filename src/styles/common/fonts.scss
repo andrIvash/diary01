@@ -1,0 +1,81 @@
+/* roboto-regular - latin_cyrillic */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'),
+       url('../fonts/roboto-v16-latin_cyrillic-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/roboto-v16-latin_cyrillic-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/fonts/roboto-v16-latin_cyrillic-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/roboto-v16-latin_cyrillic-regular.svg#Roboto') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+	font-family: 'Circe';
+	src: url('../fonts/subset-Circe-Light.woff2') format('woff2'),
+		url('../fonts/subset-Circe-Light.woff') format('woff'),
+		url('../fonts/subset-Circe-Light.ttf') format('truetype'),
+		url('../fonts/subset-Circe-Light.svg#Circe-Light') format('svg');
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Circe';
+	src: url('../fonts/subset-Circe-Regular.woff2') format('woff2'),
+		url('../fonts/subset-Circe-Regular.woff') format('woff'),
+		url('../fonts/subset-Circe-Regular.ttf') format('truetype'),
+		url('../fonts/subset-Circe-Regular.svg#Circe-Regular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Circe';
+	src: url('../fonts/subset-Circe-Bold.woff2') format('woff2'),
+		url('../fonts/subset-Circe-Bold.woff') format('woff'),
+		url('../fonts/subset-Circe-Bold.ttf') format('truetype'),
+		url('../fonts/subset-Circe-Bold.svg#Circe-Bold') format('svg');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Luga';
+	src: url('../fonts/subset-Luga-Bold.woff2') format('woff2'),
+		url('../fonts/subset-Luga-Bold.woff') format('woff'),
+		url('../fonts/subset-Luga-Bold.ttf') format('truetype'),
+		url('../fonts/subset-Luga-Bold.svg#Luga-Bold') format('svg');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'LugaExtra';
+	src: url('../fonts/subset-LugaExtra-ExtraLight.woff2') format('woff2'),
+		url('../fonts/subset-LugaExtra-ExtraLight.woff') format('woff'),
+		url('../fonts/subset-LugaExtra-ExtraLight.ttf') format('truetype'),
+		url('../fonts/subset-LugaExtra-ExtraLight.svg#LugaExtra-ExtraLight') format('svg');
+	font-weight: 200;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Luga';
+	src: url('../fonts/subset-Luga.woff2') format('woff2'),
+		url('../fonts/subset-Luga.woff') format('woff'),
+		url('../fonts/subset-Luga.ttf') format('truetype'),
+		url('../fonts/subset-Luga.svg#Luga') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+// @font-face {
+// 	font-family: 'Luga';
+// 	src: url('../fonts/subset-Luga-Oblique.woff2') format('woff2'),
+// 		url('../fonts/subset-Luga-Oblique.woff') format('woff'),
+// 		url('../fonts/subset-Luga-Oblique.ttf') format('truetype'),
+// 		url('../fonts/subset-Luga-Oblique.svg#Luga-Oblique') format('svg');
+// 	font-weight: normal;
+// 	font-style: normal;
+// }

@@ -1,0 +1,22 @@
+@import 'common/mixin';
+@import 'common/fonts';
+@import 'common/sprite';
+
+.wrapper {
+  min-height: 100vh;
+  min-width: 320px;
+  background-color: #ecf0f1;
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@import 'blocks/content';
+@import 'blocks/header';
+@import 'blocks/partion';
+@import 'blocks/info';
