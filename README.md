@@ -3,8 +3,8 @@
 
 [Demo][demo] | [Source][source]
 
-[demo]: http://
-[source]: http://
+[demo]: https://andrivash.github.io/diary01/
+[source]: https://github.com/andrIvash/diary01/tree/source
 
 
 ## Getting started for dev
