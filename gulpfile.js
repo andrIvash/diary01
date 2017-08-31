@@ -37,8 +37,7 @@ gulp.task('webpack', function() {
 // ---------------------------------------- pug -----------------------------------------//
 gulp.task('pug', function() {
   return gulp.src([
-    './src/templates/index.pug',
-    './src/templates/info.pug'
+    './src/templates/index.pug'
   ])
     .pipe(pug({ pretty: true }))
     .on('error', notify.onError(function(error) {
@@ -55,12 +54,12 @@ gulp.task('css', function() {
   return gulp.src('./src/styles/main.scss')
     .pipe(sourcemaps.init())
     .pipe(sass()).on('error', notify.onError({ title: 'Style' }))
-    .pipe(gulpStylelint({
-      failAfterError: false,
-      reporters: [
-        {formatter: 'string', console: true}
-      ]
-    }))
+    // .pipe(gulpStylelint({
+    //   failAfterError: false,
+    //   reporters: [
+    //     {formatter: 'string', console: true}
+    //   ]
+    // }))
     .pipe(postcss())
     .pipe(csso())
     .pipe(sourcemaps.write('.'))

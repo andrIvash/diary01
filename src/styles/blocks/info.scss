@@ -1,5 +1,5 @@
 .info {
-  height: 100vh;
+  display: none;
   min-height: 1000px;
   width: 100%;
   min-width: 1300px;
@@ -13,7 +13,7 @@
 
 .info__title {
   position: relative;
-  margin: 80px 30px 55px;
+  margin: 60px 30px 55px;
   box-shadow: 1px -1px 23px -2px rgba(0,0,0,0.75);
 }
 
@@ -200,4 +200,21 @@
 .info__images_two {
   bottom: 150px;
   right: 0;
+}
+
+.mark__title {
+  font-family: Luga;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #fff;
+  padding: 20px;
+  display: inline-block;
+}
+
+.mark__mark {
+  margin-left: 20px;
+  font-size: 1.6rem;
+  color: #ff644b;
+  display: inline-block;
+  font-weight: 700;
 }

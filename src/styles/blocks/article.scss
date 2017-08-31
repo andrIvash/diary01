@@ -1,0 +1,60 @@
+.article {
+  padding: 50px 20px;
+  display: none;
+}
+
+.article > .container {
+  display: block;
+}
+
+.article__title {
+  margin: 0 0 20px;
+  color: #0b0b0b;
+  font-family: Luga;
+  font-size: 1.875rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+.article__content {
+  color: #0b0b0b;
+  max-width: 100%;
+  font-family: Roboto;
+  font-size: 1.0625rem;
+  text-align: left;
+  font-weight: 300;
+  margin: 0 0 44px;
+  line-height: 1.4;
+
+  span {
+    display: inline-block;
+    margin-bottom: 15px;
+  }
+}
+
+.article__btn {
+  width: 235px;
+  height: 70px;
+  background-color: #EC6F52;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  box-shadow: 1px -1px 23px -2px rgba(0,0,0,0.75);
+  font-family: Circe;
+  font-weight: normal;
+  font-size: rem(18px);
+  color: #fff;
+
+  &:hover,
+  &:active {
+    background-color: #ec8168;
+  }
+}
+
+.video {
+  text-align: center;
+
+  iframe {
+    display: inline-block;
+  }
+}

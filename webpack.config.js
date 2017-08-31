@@ -30,9 +30,9 @@ module.exports = {
         },
         sourceMap: true 
     }),
-    new StyleLintPlugin({
-      configFile: './.stylelintrc',
-    })
+    // new StyleLintPlugin({
+    //   configFile: './.stylelintrc',
+    // })
     //new FaviconsWebpackPlugin('./favicon.png')
   ],
   module: {
@@ -42,15 +42,15 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         use: ['babel-loader']
       },
-      {
-        test: /\.js$/,
-        enforce: "pre",
-        exclude: /(node_modules|bower_components)/,
-        loader: "eslint-loader",
-        options: {
-            fix: true
-        }
-      },
+      // {
+      //   test: /\.js$/,
+      //   enforce: "pre",
+      //   exclude: /(node_modules|bower_components)/,
+      //   loader: "eslint-loader",
+      //   options: {
+      //       fix: true
+      //   }
+      // },
     ]
   }
 };

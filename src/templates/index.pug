@@ -1,14 +1,21 @@
 extends _main-layout
-
-block header
-    .header
-        .container
-            a.logo.logo_foxford(href="/")
-                img.logo__img(src="assets/img/foxword.svg" title="Фоксворд")
-            a.logo.logo_dnevnik(href="/")
-                img.logo__img(src="assets/img/dnevnik.svg" title="Дневник")
-            
+          
 block content
     include common/_main
+    include common/_info
+    include common/_article
+
+    #modal-parent
+        .parent.modal
+            .parent__title
+            .parent__content
+            a.parent__close(href="#close" rel="modal:close") Close
+    #modal-child
+        .child.modal
+            .child__title Выберите ребенка
+            ul.child__content
+                
+                
+                        
 
              

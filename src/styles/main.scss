@@ -2,10 +2,14 @@
 @import 'common/fonts';
 @import 'common/sprite';
 
+body {
+  position: relative;
+}
 .wrapper {
   min-height: 100vh;
   min-width: 320px;
   background-color: #ecf0f1;
+  position: relative;
 }
 
 .container {
@@ -16,7 +20,85 @@
   justify-content: center;
 }
 
+.section {
+  min-height: 100vh;
+}
+
+
+
+.close-modal  {
+  display: none;
+}
+
+#modal-parent, #modal-child {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(169, 166, 166, 0.35);
+}
+
+.modal {
+  width: 300px;
+  height: 100px;
+  position: absolute;
+  padding: 5px 10px;
+  font-family: Circe;
+  font-weight: 400;
+  border: 1px solid gray;
+  background-color: #ecf0f1;
+  box-shadow: 1px -1px 7px -2px rgba(0,0,0,.75);
+  border-radius: 7px;
+  color: #ff644b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  flex-direction: column;
+}
+
+.parent__title,
+.child__title {
+  font-size: rem(16px);
+  margin-bottom: 5px;
+}
+
+.parent__close,
+.child__close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: rem(12px);
+  color: #ff644b;
+}
+
+
+.child__content {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: block;
+  
+  li {
+    display: block;
+  }
+  label {
+    cursor: pointer;
+  }
+}
+
+
 @import 'blocks/content';
 @import 'blocks/header';
 @import 'blocks/partion';
 @import 'blocks/info';
+@import 'blocks/article';
