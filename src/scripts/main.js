@@ -106,7 +106,7 @@ $('.partion__list').on('click', (ev) => {
             });
             mainInfo.children[i].t.mark = +average(tMarks);
           }).then(() => {
-            return setTimeout(() => {
+            //return setTimeout(() => {
               return API.getMarksFromPeriod(mainInfo.children[i].e.items, '2016-09-01T00:00:00', '2017-02-01T00:00:00', mainInfo.children[i].id.id).then(data => {
                 const eMarks = [];
                 data.forEach(elem => {
@@ -117,9 +117,9 @@ $('.partion__list').on('click', (ev) => {
                 mainInfo.children[i].e.mark = +average(eMarks);
               })
             
-            }, 100);
+            //}, 100);
           }).then(() => {
-            return setTimeout(() => {
+            //return setTimeout(() => {
             return API.getMarksFromPeriod(mainInfo.children[i].g.items, '2016-09-01T00:00:00', '2017-02-01T00:00:00', mainInfo.children[i].id.id).then(data =>{
               const gMarks = [];
               data.forEach(elem => {
@@ -129,7 +129,7 @@ $('.partion__list').on('click', (ev) => {
               });
               mainInfo.children[i].g.mark = +average(gMarks);
             });
-          }, 100);
+          //}, 100);
           });
           promises.push(promise);
         }
@@ -161,20 +161,30 @@ $('.partion__list').on('click', (ev) => {
             fadeDuration: 250,
             fadeDelay: 1.5
           });
-          infoBlock.show();
-          articleBlock.show();
-          renderData(activeSubject, mainInfo.children[activeChild][activeSubject].mark);
+          modal.on($.modal.CLOSE, function(event, modal) {
+            infoBlock.show();
+            articleBlock.show();
+            renderData(activeSubject, mainInfo.children[activeChild][activeSubject].mark);
+            setTimeout(() => {
+              showData(mainInfo);
+            },1500);
+            $('body,html').animate({scrollTop: infoBlock.offset().top}, 1500);
+            console.log(mainInfo);
+          });
+          
         } else {
           infoBlock.show();
           articleBlock.show();
           renderData(activeSubject, mainInfo.children[activeChild][activeSubject].mark);
+          setTimeout(() => {
+            showData(mainInfo);
+          },1500);
+          $('body,html').animate({scrollTop: infoBlock.offset().top}, 1500);
+          console.log(mainInfo);
         }
         // childrens popup
-        $('body,html').animate({scrollTop: infoBlock.offset().top}, 1500);
-        console.log(mainInfo);
-        setTimeout(() => {
-          showData(mainInfo);
-        },1500);
+       
+        
         
         
       }).catch(error => {
@@ -200,7 +210,7 @@ function showData (mainInfo) {
   //const e = mainInfo.children[activeChild].e.mark;
   //const t = mainInfo.children[activeChild].t.mark;
   //const g = mainInfo.children[activeChild].g.mark;
-    const mark = mainInfo.children[activeChild][activeSubject].mark;
+    const mark = mainInfo.children[activeChild][activeSubject].mark || 'нет данных';
     console.log(mark)
     $('.mark__title').text('Средний балл в данной области');
     $('.mark__mark').html(mark);

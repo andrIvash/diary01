@@ -140,15 +140,15 @@ var API = {
     var ans = [],
         that = this,
         iter = 0;
-    
-    if (subjects.length === 0) {
-      $('#modal-parent').modal({
-        fadeDuration: 250,
-        fadeDelay: 1.5
-      });
-      $('.parent__title').html('Не найдено предметов !');
-      throw new Error('На найдено предметов !');
-    }
+    console.log(subjects.length);  
+    // if (subjects.length === 0) {
+    //   $('#modal-parent').modal({
+    //     fadeDuration: 250,
+    //     fadeDelay: 1.5
+    //   });
+    //   $('.parent__title').html('Не найдено предметов !');
+    //   //throw new Error('На найдено предметов !');
+    // }
     const promises = [];
 
     for (var i = 0; i < subjects.length; i++) {
@@ -164,9 +164,9 @@ var API = {
           req.onload = function() {
             if (req.status == 200) {
               ans.push({ subject: subjects[iter], data: JSON.parse(req.response) });
-              window.setTimeout(() => {
+              //window.setTimeout(() => {
                 resolve(JSON.parse(req.response));
-              }, 500);
+              //}, 500);
               
             } else {
               reject(Error(req.statusText));
