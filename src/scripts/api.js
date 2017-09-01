@@ -140,7 +140,7 @@ var API = {
     var ans = [],
         that = this,
         iter = 0;
-    console.log(subjects.length);  
+    
     // if (subjects.length === 0) {
     //   $('#modal-parent').modal({
     //     fadeDuration: 250,

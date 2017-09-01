@@ -27,7 +27,6 @@ $('.partion__list').on('click', (ev) => {
       activeColor = ['#235B92', '#16335F'];
     }
     infoBlock.css('background-image', `radial-gradient(ellipse farthest-corner at right center, ${activeColor[0]} 0%, ${activeColor[1]} 100%)`);
-    console.log('click');
     const mainInfo = {
       children: []
     }; // initial main object  
@@ -106,7 +105,6 @@ $('.partion__list').on('click', (ev) => {
         for (let i = 0; i < mainInfo.children.length; i++) { //get marks
           let promise = API.getMarksFromPeriod(mainInfo.children[i].t.items, '2016-09-01T00:00:00', '2017-02-01T00:00:00', mainInfo.children[i].id.id).then(data => {
             const tMarks = [];
-            console.log('test');
             data.forEach(elem => {
               elem.data.forEach(mark => {
                 tMarks.push(+mark.value);
@@ -159,10 +157,10 @@ $('.partion__list').on('click', (ev) => {
           })
           $('.child__content').one('click', (ev) => {
             ev.preventDefault();
-            console.log('clikc');
+            
             const target = $(ev.target);
             activeChild = target.closest('.childe__item').data('number');
-            console.log('child', activeChild);
+            
             $.modal.close();
           });
           modal.modal({
@@ -176,7 +174,7 @@ $('.partion__list').on('click', (ev) => {
             setTimeout(() => {
               showData(mainInfo);
             },1500);
-            $('body,html').animate({scrollTop: infoBlock.offset().top}, 1500);
+            $('body,html').animate({scrollTop: $('.marks').offset().top}, 1500);
             console.log(mainInfo);
           });
           
@@ -187,7 +185,7 @@ $('.partion__list').on('click', (ev) => {
           setTimeout(() => {
             showData(mainInfo);
           },1500);
-          $('body,html').animate({scrollTop: infoBlock.offset().top}, 1500);
+          $('body,html').animate({scrollTop: $('.marks').offset().top}, 1500);
           console.log(mainInfo);
         }
         // childrens popup
@@ -219,8 +217,8 @@ function showData (mainInfo) {
   //const t = mainInfo.children[activeChild].t.mark;
   //const g = mainInfo.children[activeChild].g.mark;
     const mark = mainInfo.children[activeChild][activeSubject].mark || 'нет данных';
-    console.log(mark)
-    $('.mark__title').text('Средний балл в данной области');
+    
+    $('.mark__title').text('Средний балл в данной области: ');
     $('.mark__mark').html(mark);
 }
 

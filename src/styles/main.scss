@@ -4,6 +4,7 @@
 
 body {
   position: relative;
+  background-color: #ecf0f1;
 }
 
 .wrapper {
@@ -24,7 +25,7 @@ body {
 }
 
 .section {
-  min-height: 100vh;
+   //min-height: 100vh;
 }
 
 
@@ -107,3 +108,5 @@ body {
 @import 'blocks/partion';
 @import 'blocks/info';
 @import 'blocks/article';
+@import 'blocks/marks';
+

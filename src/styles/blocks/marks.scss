@@ -1,0 +1,29 @@
+.marks {
+  display: block;
+  text-align: center;
+  min-height: 50px;
+
+  .container {
+    display: block;
+  }
+}
+
+.mark__title {
+  font-family: Luga;
+  font-size: rem(20px);
+  font-weight: 400;
+  color: #0b0b0b;
+  padding: 20px;
+  display: inline-block;
+  letter-spacing: 1px;
+}
+
+.mark__mark {
+  font-family: Luga;
+  margin-left: 20px;
+  font-size: rem(21px);
+  color: #ff644b;
+  display: inline-block;
+  font-weight: 400;
+  letter-spacing: 1px;
+}

@@ -10,32 +10,37 @@
 }
 
 .article__title {
-  margin: 0 0 20px;
+  margin: 0 auto 20px;
   color: #0b0b0b;
   font-family: Luga;
   font-size: 1.875rem;
   font-weight: 400;
-  text-align: center;
+  text-align: left;
+  max-width: 1000px;
 }
 
 .article__content {
   color: #0b0b0b;
-  max-width: 100%;
-  font-family: Roboto;
-  font-size: 1.0625rem;
+  max-width: 1000px;
+  font-family: Circe;
+  font-size: 19px;
   text-align: left;
   font-weight: 300;
-  margin: 0 0 44px;
+  margin: 0 auto 44px;
   line-height: 1.4;
 
   span {
     display: inline-block;
     margin-bottom: 15px;
   }
+  ul {
+
+  }
 }
 
 .article_btn-wrapper {
   text-align: center;
+  margin-bottom: 50px;
 }
 
 .article__btn {
