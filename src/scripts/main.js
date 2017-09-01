@@ -10,7 +10,7 @@ const articleBlock = $('.article');
 
 let activeChild = 0;
 let activeSubject = null;
-
+let activeColor = ['#235B92', '#16335F'];
 
 // on select subject event evitter
 $('.partion__list').on('click', (ev) => {
@@ -18,7 +18,15 @@ $('.partion__list').on('click', (ev) => {
   const target = $(ev.target);
   if (target.parent().hasClass('partion__item')) {
     activeSubject = target.closest('.partion__item').data('type');
-    activeSubject = activeSubject || 'e';
+    activeSubject = activeSubject || 'g';
+    if(activeSubject === 'e') { // естественные 1abc9c
+      activeColor = ['#62BAA8', '#1abc9c'];
+    } else if (activeSubject === 't') { // технические ecf0f1
+      activeColor = ['#fff', '#575858'];
+    } else if (activeSubject === 'g') { // гуманитарные
+      activeColor = ['#235B92', '#16335F'];
+    }
+    infoBlock.css('background-image', `radial-gradient(ellipse farthest-corner at right center, ${activeColor[0]} 0%, ${activeColor[1]} 100%)`);
     console.log('click');
     const mainInfo = {
       children: []
