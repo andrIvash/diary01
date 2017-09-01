@@ -1,10 +1,12 @@
 .article {
-  padding: 50px 20px;
   display: none;
+  min-width: 1300px;
+  position: relative;
 }
 
 .article > .container {
   display: block;
+  padding: 50px 20px 80px;
 }
 
 .article__title {
@@ -32,10 +34,15 @@
   }
 }
 
+.article_btn-wrapper {
+  text-align: center;
+}
+
 .article__btn {
+  display: inline-block;
   width: 235px;
   height: 70px;
-  background-color: #EC6F52;
+  background-color: #ec6f52;
   border: 0;
   outline: 0;
   cursor: pointer;

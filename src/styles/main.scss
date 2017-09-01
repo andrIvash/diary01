@@ -5,9 +5,12 @@
 body {
   position: relative;
 }
+
 .wrapper {
   min-height: 100vh;
-  min-width: 320px;
+  //min-width: 320px;
+  width: 100%;
+  min-width: 1300px;
   background-color: #ecf0f1;
   position: relative;
 }
@@ -90,9 +93,11 @@ body {
   
   li {
     display: block;
+    margin-bottom: 5px;
   }
   label {
     cursor: pointer;
+    margin-left: 5px;
   }
 }
 
