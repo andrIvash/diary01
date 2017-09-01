@@ -19,9 +19,9 @@ $('.partion__list').on('click', (ev) => {
   if (target.parent().hasClass('partion__item')) {
     activeSubject = target.closest('.partion__item').data('type');
     activeSubject = activeSubject || 'g';
-    if(activeSubject === 'e') { // естественные 1abc9c
+    if(activeSubject === 'e') { // естественные 
       activeColor = ['#62BAA8', '#1abc9c'];
-    } else if (activeSubject === 't') { // технические ecf0f1
+    } else if (activeSubject === 't') { // технические 
       activeColor = ['#fff', '#575858'];
     } else if (activeSubject === 'g') { // гуманитарные
       activeColor = ['#235B92', '#16335F'];
@@ -30,15 +30,15 @@ $('.partion__list').on('click', (ev) => {
     const mainInfo = {
       children: []
     }; // initial main object  
-    Auth.auth(() => {
-      API.init();
+    Auth.auth(() => { 
+      API.init();   // аутентификация и инициализация апи
       API.getUserInfo().then((res) => {
         const roles = API.getData().user.roles;
         const isParent = roles.find(role => {
           return role === 'EduParent';
         });
 
-        if (!isParent) { // test for parent
+        if (!isParent) { // проверка на родителя
           $('#modal-parent').modal({
             fadeDuration: 250,
             fadeDelay: 1.5
@@ -48,28 +48,45 @@ $('.partion__list').on('click', (ev) => {
         } else {
           return API.getChildren();
         }
-      }).then((res) => {  //get all children
-        
+      }).then((res) => {  //получаем список детей пользователя
               var kids = API.getData().childrenId;
-
+              var kidsId = [];
               kids.forEach(child => {
-                mainInfo.children.push({
+                kidsId.push(child.userId);
+              });
+              return API.getSeveralUserInfo(kidsId); // получаем инфо о детях
+      }).then((data) => {
+                   
+              data.forEach(child => {
+                if (calculateAge(child.birthday) > 6) { // проверка на детский возраст
+                  mainInfo.children.push({
                     id: child,
                     class: null,
                     t: {items: [], mark: null},
                     e: {items: [], mark: null},
                     g: {items: [], mark: null}
                   });
-              });
+                } 
+
+              })
+              if (mainInfo.children.length == 0) { // если нет детей по возрасту то предупреждение
+                    $('#modal-parent').modal({
+                      fadeDuration: 250,
+                      fadeDelay: 1.5
+                    });
+                    $('.parent__title').html('Нет детей школьного возраста !');
+                    throw Error('Нет детей школьного возраста');
+              } 
+              
               const promises = [];
-              for(let i = 0; i < mainInfo.children.length; i++) { // get subjects
-                 let promise = API.getEduGroup(mainInfo.children[i].id.id);
+              for(let i = 0; i < mainInfo.children.length; i++) { // получаем предметы
+                 let promise = API.getEduGroup(mainInfo.children[i].id.personId);
                  promise.then((data) => {
                   let groups = data.filter((group) => {
                     return group.type == 'Group';
                   });
                   mainInfo.children[i].class = groups[0];
-                  mainInfo.children[i].class.subjects.forEach(subject => { // select knowledge area
+                  mainInfo.children[i].class.subjects.forEach(subject => { // распределение предметов по группам
                       if (subject.knowledgeArea === 'Математика' ||
                         subject.knowledgeArea === 'Алгебра' ||
                         subject.knowledgeArea === 'Геометрия' ||
@@ -102,8 +119,8 @@ $('.partion__list').on('click', (ev) => {
       }).then(() => {
         
         const promises = [];
-        for (let i = 0; i < mainInfo.children.length; i++) { //get marks
-          let promise = API.getMarksFromPeriod(mainInfo.children[i].t.items, '2016-09-01T00:00:00', '2017-02-01T00:00:00', mainInfo.children[i].id.id).then(data => {
+        for (let i = 0; i < mainInfo.children.length; i++) { // получаем оценки за период по предметам
+          let promise = API.getMarksFromPeriod(mainInfo.children[i].t.items, '2016-09-01T00:00:00', '2017-02-01T00:00:00', mainInfo.children[i].id.personId).then(data => {
             const tMarks = [];
             data.forEach(elem => {
               elem.data.forEach(mark => {
@@ -113,7 +130,7 @@ $('.partion__list').on('click', (ev) => {
             mainInfo.children[i].t.mark = +average(tMarks);
           }).then(() => {
             //return setTimeout(() => {
-              return API.getMarksFromPeriod(mainInfo.children[i].e.items, '2016-09-01T00:00:00', '2017-02-01T00:00:00', mainInfo.children[i].id.id).then(data => {
+              return API.getMarksFromPeriod(mainInfo.children[i].e.items, '2016-09-01T00:00:00', '2017-02-01T00:00:00', mainInfo.children[i].id.personId).then(data => {
                 const eMarks = [];
                 data.forEach(elem => {
                   elem.data.forEach(mark => {
@@ -126,7 +143,7 @@ $('.partion__list').on('click', (ev) => {
             //}, 100);
           }).then(() => {
             //return setTimeout(() => {
-            return API.getMarksFromPeriod(mainInfo.children[i].g.items, '2016-09-01T00:00:00', '2017-02-01T00:00:00', mainInfo.children[i].id.id).then(data =>{
+            return API.getMarksFromPeriod(mainInfo.children[i].g.items, '2016-09-01T00:00:00', '2017-02-01T00:00:00', mainInfo.children[i].id.personId).then(data =>{
               const gMarks = [];
               data.forEach(elem => {
                 elem.data.forEach(mark => {
@@ -143,7 +160,7 @@ $('.partion__list').on('click', (ev) => {
         return Promise.all(promises);
       
       }).then(() => {
-        if (mainInfo.children.length > 1) {
+        if (mainInfo.children.length > 1) { // если детей больше одного то выбор
           const modal = $('#modal-child');
           $('.child__content').html(''); 
           mainInfo.children.forEach((child, indx) => {
@@ -175,7 +192,7 @@ $('.partion__list').on('click', (ev) => {
               showData(mainInfo);
             },1500);
             $('body,html').animate({scrollTop: $('.marks').offset().top}, 1500);
-            console.log(mainInfo);
+            // console.log(mainInfo);  !! result object
           });
           
         } else {
@@ -187,11 +204,7 @@ $('.partion__list').on('click', (ev) => {
           },1500);
           $('body,html').animate({scrollTop: $('.marks').offset().top}, 1500);
           console.log(mainInfo);
-        }
-        // childrens popup
-       
-        
-        
+        } 
         
       }).catch(error => {
         console.log(error);
@@ -200,7 +213,7 @@ $('.partion__list').on('click', (ev) => {
   };
 });
 
-function average(arr) {
+function average(arr) { // средняя оценка
   var sum = 0;
   for (var i = 0; i < arr.length; i++ ) {
     sum += arr[i];
@@ -212,7 +225,7 @@ function average(arr) {
     return sum.toFixed(1);
   }
 }
-function showData (mainInfo) {
+function showData (mainInfo) {  // вывод средних оценок
   //const e = mainInfo.children[activeChild].e.mark;
   //const t = mainInfo.children[activeChild].t.mark;
   //const g = mainInfo.children[activeChild].g.mark;
@@ -222,14 +235,14 @@ function showData (mainInfo) {
     $('.mark__mark').html(mark);
 }
 
-function renderData (activeSubject, score) {
+function renderData (activeSubject, score) { // проверка оценок
   let level = 'low';
   
   if (score < 3.9) {
     level = 'low';
-  } else if (4.0 < score && score < 4,4) {
+  } else if (score > 4.0  && score < 4.4) {
     level = 'mid';
-  } else if (4,5 < score && score < 5.0) {
+  } else if (score > 4.5  && score < 5.0) {
     level = 'high';
   }
   
@@ -243,3 +256,10 @@ function renderData (activeSubject, score) {
   
 }
 
+function calculateAge(birthday) { // расчет возраста от даты рождения
+  let date = birthday.split('T');
+  date = date[0].split('-');
+  const ageDifMs = Date.now() - new Date(date[0], date[1], date[2]);
+  const ageDate = new Date(ageDifMs); // miliseconds from epoch
+  return Math.abs(ageDate.getUTCFullYear() - 1970);
+}

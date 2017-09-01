@@ -12,35 +12,7 @@ var API = {
     return this.model;
   },
 
-  getUserInfoold: function(callback) {
-    var that = this;
-
-    $.ajax({
-      contentType: 'application/json',
-      data: JSON.stringify({}),
-      dataType: 'json',
-      success: function(data) {
-        // console.log(data);
-        if (void 0 !== data) {
-
-          // data.personId_str = '1000001906334';
-
-          that.model.user = data;
-          if (typeof callback === 'function') {
-            callback(data);
-          }
-        }
-      },
-      error: function() {
-        Cookie.delete('token');
-        Auth.auth();
-      },
-      processData: false,
-      type: 'GET',
-      url: appOptions.api + 'users/me/?access_token=' + this.token
-    });
-  },
-  getUserInfo: function () {
+  getUserInfo: function () { // данные пользователя
       var url = appOptions.api + 'users/me/?access_token=' + this.token;
       var that = this;
       //?access_token=' + this.token
@@ -65,7 +37,33 @@ var API = {
         req.send(); // Make the request
       });
     },
-    getPersonInfo: function(id) {
+    getSeveralUserInfo: function (users) { // данные нескольких пользователей
+      var url = appOptions.api + 'users?access_token=' + this.token;
+      var that = this;
+      return new Promise(function(resolve, reject) { // return new Promise
+        var req = new XMLHttpRequest();
+        req.open('POST', url);
+        req.setRequestHeader('Accept', 'application/json');
+        //req.setRequestHeader('Access-Token', key);
+        req.setRequestHeader('Content-Type', 'application/json');
+        
+        req.onload = function() {
+          if (req.status == 200) {
+            resolve(JSON.parse(req.response));
+          } else {
+            Cookie.delete('token');
+            Auth.auth();
+            reject(Error(req.statusText));
+          }
+        };
+        req.onerror = function() { // network errors
+          reject(Error('Network Error'));
+        };
+        
+        req.send(JSON.stringify(users)); // Make the request
+      });
+    },
+    getPersonInfo: function(id) { // данные пользователя
       var url = `${appOptions.api}persons/${id}?access_token=${this.token}`;
       var that = this;
       //?access_token=' + this.token
@@ -87,7 +85,7 @@ var API = {
         req.send(); // Make the request
       });
     },  
-  getChildren: function(callback) {
+  getChildren: function(callback) { // дети пользователя
     var that = this;
     //var url = appOptions.api + 'users/me/children/?access_token=' + this.token;
     var url = `${appOptions.api}user/${this.model.user.id}/children?access_token=${this.token}`;
@@ -112,7 +110,7 @@ var API = {
     });
   },
 
-  getEduGroup: function(userId, callback) {
+  getEduGroup: function(userId, callback) { // группы пользователя
     var that = this;
     var url = appOptions.api + 'persons/' + userId + '/edu-groups?access_token=' + this.token;
     
@@ -136,7 +134,7 @@ var API = {
     });
   },
 
-  getMarksFromPeriod: function(subjects, start, end, userId, callback) {
+  getMarksFromPeriod: function(subjects, start, end, userId, callback) { // оценки по предмету за период 
     var ans = [],
         that = this,
         iter = 0;
