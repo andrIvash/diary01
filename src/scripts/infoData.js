@@ -22,7 +22,10 @@ export default {
         {
           title: 'Подтяните знания с репетитором.',
           text: 'Чтобы ребёнок не утратил мотивацию к учебе, иногда нужна помощь профессионала. Репетитор «Фоксфорда» подготовит к контрольным и составит программу обучения с учетом уровня знаний ребёнка.'
-        }]
+        }],
+      utm: 'https://foxford.ru/?ref=dnevnik_special&utm_source=partner&utm_medium=analizator_dnevnik&utm_campaign=tochnie&utm_content=tri&utm_term=free_class',
+      ga: "ga('send','event','Записаться на занятие_точные_троечник','Клик')",
+      ym: "yaCounter45786102.reachGoal('LessonMath3')"
     },
     mid: {
       title: 'Как закрепить успех в точных дисциплинах ?',
@@ -46,11 +49,14 @@ export default {
         {
           title: 'Закрепите успех с репетитором.',
           text: 'Остановились в шаге от пятерки? Репетитор поможет подтянуть знания и прийти к желаемому результату. Первое занятие – бесплатное.'        
-        }]
+        }],
+      utm: 'https://foxford.ru/?ref=dnevnik_special&utm_source=partner&utm_medium=analizator_dnevnik&utm_campaign=tochnie&utm_content=chetire&utm_term=free_class',
+      ga: "ga('send','event','Записаться на занятие_точные_хорошист','Клик')",
+      ym: "yaCounter45786102.reachGoal('LessonMath4')"
     },
     high: {
       title: 'Как развивать склонность к точным наукам ?',
-      data: [ 
+      data: [
         {
           title: 'Занимайтесь дополнительно.',
           text: 'Решайте дополнительные задания и примеры. На сайте math-prosto.ru собраны задачи по математике, алгебре и геометрии для школьников всех возрастов.'        
@@ -70,7 +76,10 @@ export default {
         {
           title: 'Запишитесь на курсы.',
           text: 'Олимпиадные курсы «Фоксфорда» – это тренировка в решении олимпиадных задач, секреты успеха и правильной мотивации. Пробное занятие проводится бесплатно.'        
-        }]
+        }],
+      utm: 'https://foxford.ru/?ref=dnevnik_special&utm_source=partner&utm_medium=analizator_dnevnik&utm_campaign=tochnie&utm_content=pyat&utm_term=free_class',
+      ga: "ga('send','event','Записаться на занятие_точные_отличник','Клик')",
+      ym: "yaCounter45786102.reachGoal('LessonMath5')"
     }
   },
   e: {
@@ -96,7 +105,10 @@ export default {
         {
           title: 'Поработайте с репетитором.',
           text: 'Репетитор поможет подтянуть оценки и заполнить пробелы в знаниях. Найти репетитора можно за один день, а первое занятие – бесплатное.'        
-        }]
+        }],
+      utm: 'https://foxford.ru/?ref=dnevnik_special&utm_source=partner&utm_medium=analizator_dnevnik&utm_campaign=estectvennie&utm_content=tri&utm_term=free_class',
+      ga: "ga('send','event','Записаться на занятие_естественные_троечник','Клик')",
+      ym: "yaCounter45786102.reachGoal('LessonBio3')"
     },
     mid: {
       title: 'Как закрепить результат по предметам естественно-научного цикла ?',
@@ -120,7 +132,10 @@ export default {
         {
           title: 'Закрепите успех с репетитором.',
           text: 'Остановились в шаге от пятерки? Репетитор поможет подтянуть знания и прийти к желаемому результату. Подобрать преподавателя можно под индивидуальные особенности и цели ребенка.'        
-        }]
+        }],
+      utm: 'https://foxford.ru/?ref=dnevnik_special&utm_source=partner&utm_medium=analizator_dnevnik&utm_campaign=estectvennie&utm_content=chetire&utm_term=free_class',
+      ga: "ga('send','event','Записаться на занятие_естественные_хорошист','Клик')",
+      ym: "yaCounter45786102.reachGoal('LessonBio4')"
     },
     high: {
       title: 'Как развить склонности к предметам естественно-научного цикла ?',
@@ -144,7 +159,10 @@ export default {
         {
           title: 'Запишитесь на курсы.',
           text: 'На бесплатном занятии углубленного курса «Фоксфорда» преподаватели МГУ, ВШЭ и МФТИ расскажут удивительные факты о мире и научат решать сложные задачи.'
-        }]
+        }],
+      utm: 'https://foxford.ru/?ref=dnevnik_special&utm_source=partner&utm_medium=analizator_dnevnik&utm_campaign=estectvennie&utm_content=pyat&utm_term=free_class',
+      ga: "ga('send','event','Записаться на занятие_естественные_отличник','Клик')",
+      ym: "yaCounter45786102.reachGoal('LessonBio5')"
     }
   },
   g: {
@@ -171,7 +189,10 @@ export default {
           title: 'Подтяните знания с репетитором.',
           text: 'Чтобы ребёнок не утратил мотивацию к учебе, иногда нужна помощь профессионала. Репетитор «Фоксфорда» подготовит к контрольным и составит программу обучения с учетом уровня знаний ребёнка.'          
         }
-      ]
+      ],
+      utm: 'https://foxford.ru/?ref=dnevnik_special&utm_source=partner&utm_medium=analizator_dnevnik&utm_campaign=gumanitariy&utm_content=tri&utm_term=free_class',
+      ga: "ga('send','event','Записаться на занятие_гуманитарные_троечник','Клик')",
+      ym: "yaCounter45786102.reachGoal('LessonHuman3')"
     },
     mid: {
       title: 'Как закрепить успех по предметам гуманитарного цикла ?',
@@ -196,7 +217,10 @@ export default {
           title: 'Закрепите успех с репетитором.',
           text: 'Остановились в шаге от пятерки? Репетитор поможет подтянуть знания и прийти к желаемому результату. Подобрать преподавателя можно под уровень знаний и цели ребенка.'
         }
-      ]
+      ],
+      utm: 'https://foxford.ru/?ref=dnevnik_special&utm_source=partner&utm_medium=analizator_dnevnik&utm_campaign=gumanitariy&utm_content=chetire&utm_term=free_class',
+      ga: "ga('send','event','Записаться на занятие_гуманитарные_хорошист','Клик')",
+      ym: "yaCounter45786102.reachGoal('LessonHuman4')"
     },
     high: {
       title: 'Как развивать склонность к предметам гуманитарного цикла ?',
@@ -221,8 +245,15 @@ export default {
           title: 'Запишитесь на курсы.',
           text: 'Углубленные курсы «Фоксфорда» – это тренировка в решении сложных задач, которые по уровню превосходят школьную программу. Пробное занятие проводится бесплатно.'          
         }
-      ]
+      ],
+      utm: 'https://foxford.ru/?ref=dnevnik_special&utm_source=partner&utm_medium=analizator_dnevnik&utm_campaign=gumanitariy&utm_content=pyat&utm_term=free_class',
+      ga: "ga('send','event','Записаться на занятие_гуманитарные_отличник','Клик')",
+      ym: "yaCounter45786102.reachGoal('LessonHuman5')"
     }
+  },
+  bottom: {
+    utm: 'https://foxford.ru/?ref=dnevnik_special&utm_source=partner&utm_medium=analizator_dnevnik&utm_campaign=statya&utm_content=free_class',
+    ga: "ga('send','event','Статья_Записаться на занятие','Клик')",
+    ym: "yaCounter45786102.reachGoal('clickarticle')"
   }
 };
-

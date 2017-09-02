@@ -14,10 +14,16 @@ section.section.main
     .partion.main__partion
       h2.partion__title Выберите интересующую вас научную область!
       ul.partion__list
-        li.partion__item.partion__item-e(data-type="e")
+        li.partion__item.partion__item-e(
+          data-type="e" 
+          onclick="ga('send','event','Естественные науки','Клик');yaCounter45786102.reachGoal('clickBio');")
           a.partion__link.partion__link-e(href="/") Естественные науки
-        li.partion__item.partion__item-t(data-type="t") 
+        li.partion__item.partion__item-t(
+          data-type="t"
+          onclick="ga('send','event','Точные науки','Клик');yaCounter45786102.reachGoal('clickMath');") 
           a.partion__link.partion__link-t(href="/") Точные науки
-        li.partion__item.partion__item-g(data-type="g")
+        li.partion__item.partion__item-g(
+          data-type="g"
+          onclick="ga('send','event','Гуманитарные','Клик');yaCounter45786102.reachGoal('clickHuman');")
           a.partion__link.partion__link-g(href="/") Гуманитарные науки
 

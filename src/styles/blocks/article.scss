@@ -46,7 +46,7 @@
 .article__btn {
   display: inline-block;
   width: 235px;
-  height: 70px;
+  padding: 17px 0;
   background-color: #ec6f52;
   border: 0;
   outline: 0;
@@ -56,10 +56,12 @@
   font-weight: normal;
   font-size: rem(18px);
   color: #fff;
+  text-decoration: none;
 
   &:hover,
   &:active {
     background-color: #ec8168;
+    text-decoration: none;
   }
 }
 
