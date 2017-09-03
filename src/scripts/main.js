@@ -10,7 +10,7 @@ const articleBlock = $('.article');
 const btnTop = $('.article__btn_top');
 const btnBottom = $('.article__btn_bottom');
 
-let activeChild = 0;
+let activeChild;
 let activeSubject = null;
 let activeColor = ['#235B92', '#16335F'];
 
@@ -117,7 +117,7 @@ $('.partion__list').on('click', (ev) => {
       }).then(() => {
         const promises = [];
         for (let i = 0; i < mainInfo.children.length; i++) { // получаем оценки за период по предметам
-          let promise = API.getMarksFromPeriod(mainInfo.children[i].t.items, '2016-09-01T00:00:00', '2017-02-01T00:00:00', mainInfo.children[i].id.personId).then(data => {
+          let promise = API.getMarksFromPeriod(mainInfo.children[i].t.items, '2017-09-01T00:00:00', '2018-02-01T00:00:00', mainInfo.children[i].id.personId).then(data => {
             const tMarks = [];
             data.forEach(elem => {
               elem.data.forEach(mark => {
@@ -126,7 +126,7 @@ $('.partion__list').on('click', (ev) => {
             });
             mainInfo.children[i].t.mark = +average(tMarks);
           }).then(() => {
-            return API.getMarksFromPeriod(mainInfo.children[i].e.items, '2016-09-01T00:00:00', '2017-02-01T00:00:00', mainInfo.children[i].id.personId).then(data => {
+            return API.getMarksFromPeriod(mainInfo.children[i].e.items, '2017-09-01T00:00:00', '2018-02-01T00:00:00', mainInfo.children[i].id.personId).then(data => {
               const eMarks = [];
               data.forEach(elem => {
                 elem.data.forEach(mark => {
@@ -136,7 +136,7 @@ $('.partion__list').on('click', (ev) => {
               mainInfo.children[i].e.mark = +average(eMarks);
             })
           }).then(() => {
-            return API.getMarksFromPeriod(mainInfo.children[i].g.items, '2016-09-01T00:00:00', '2017-02-01T00:00:00', mainInfo.children[i].id.personId).then(data =>{
+            return API.getMarksFromPeriod(mainInfo.children[i].g.items, '2017-09-01T00:00:00', '2018-02-01T00:00:00', mainInfo.children[i].id.personId).then(data =>{
               const gMarks = [];
               data.forEach(elem => {
                 elem.data.forEach(mark => {
@@ -173,14 +173,16 @@ $('.partion__list').on('click', (ev) => {
             fadeDelay: 1.5
           });
           modal.on($.modal.CLOSE, function(event, modal) {
-            infoBlock.show();
-            articleBlock.show();
-            renderData(activeSubject, mainInfo.children[activeChild][activeSubject].mark);
-            setTimeout(() => {
-              showData(mainInfo);
-            },1500);
-            $('body,html').animate({scrollTop: $('.marks').offset().top}, 1500);
-            // console.log(mainInfo);  !! result object
+            if(typeof activeChild !== 'undefined') {
+              infoBlock.show();
+              articleBlock.show();
+              renderData(activeSubject, mainInfo.children[activeChild][activeSubject].mark);
+              setTimeout(() => {
+                showData(mainInfo);
+              }, 1500);
+              $('body,html').animate({scrollTop: $('.marks').offset().top}, 1500);
+              // console.log(mainInfo);  !! result object
+            }
           });
 
         } else {

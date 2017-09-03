@@ -79,7 +79,7 @@ body {
 .parent__close,
 .child__close {
   position: absolute;
-  top: 5px;
+  top: 10px;
   right: 10px;
   font-size: rem(12px);
   color: #ff644b;
@@ -102,6 +102,11 @@ body {
   }
 }
 
+.close__icon {
+  width: 10px;
+  height: 10px;
+  fill: #ff644b;
+}
 
 @import 'blocks/content';
 @import 'blocks/header';
