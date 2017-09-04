@@ -237,6 +237,7 @@ function average(arr) { // средняя оценка
 }
 function showData(mainInfo) {  // вывод средних оценок
   const mark = mainInfo.children[activeChild][activeSubject].mark || 'нет данных';
+  $('.marks').css('background-color', '#e0dfdf');
   $('.mark__title').text('Средний балл в данной области: ');
   $('.mark__mark').html(mark);
 }
@@ -260,8 +261,8 @@ function renderData(activeSubject, score) { // проверка оценок
     wrapper.find('.texts__content').html(elem.text);
   });
   // set link 
-  btnTop.attr('onClick', `${renderData.ga};${renderData.ym};window.location.href="${renderData.utm}";`);
-  btnBottom.attr('onClick', `${infoData.bottom.ga};${infoData.bottom.ym};window.location.href="${infoData.bottom.utm}";`);
+  btnTop.attr('onClick', `${renderData.ga};${renderData.ym};window.open("${renderData.utm}");`);
+  btnBottom.attr('onClick', `${infoData.bottom.ga};${infoData.bottom.ym};window.open("${infoData.bottom.utm}")`);
 }
 
 function calculateAge(birthday) { // расчет возраста от даты рождения
