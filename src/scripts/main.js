@@ -81,6 +81,7 @@ $('.partion__list').on('click', (ev) => {
         for (let i = 0; i < mainInfo.children.length; i++) { // получаем предметы
           let promise = API.getEduGroup(mainInfo.children[i].id.personId);
           promise.then((data) => {
+            console.log(data);
             let groups = data.filter((group) => {
               return group.type == 'Group';
             });
@@ -117,7 +118,7 @@ $('.partion__list').on('click', (ev) => {
       }).then(() => {
         const promises = [];
         for (let i = 0; i < mainInfo.children.length; i++) { // получаем оценки за период по предметам
-          let promise = API.getMarksFromPeriod(mainInfo.children[i].t.items, '2017-09-01T00:00:00', '2018-02-01T00:00:00', mainInfo.children[i].id.personId).then(data => {
+          let promise = API.getMarksFromPeriod(mainInfo.children[i].t.items, '2017-01-01T00:00:00', '2017-06-31T00:00:00', mainInfo.children[i].id.personId).then(data => {
             const tMarks = [];
             data.forEach(elem => {
               elem.data.forEach(mark => {
@@ -126,7 +127,7 @@ $('.partion__list').on('click', (ev) => {
             });
             mainInfo.children[i].t.mark = +average(tMarks);
           }).then(() => {
-            return API.getMarksFromPeriod(mainInfo.children[i].e.items, '2017-09-01T00:00:00', '2018-02-01T00:00:00', mainInfo.children[i].id.personId).then(data => {
+            return API.getMarksFromPeriod(mainInfo.children[i].e.items, '2017-01-01T00:00:00', '2017-06-31T00:00:00', mainInfo.children[i].id.personId).then(data => {
               const eMarks = [];
               data.forEach(elem => {
                 elem.data.forEach(mark => {
@@ -136,7 +137,7 @@ $('.partion__list').on('click', (ev) => {
               mainInfo.children[i].e.mark = +average(eMarks);
             })
           }).then(() => {
-            return API.getMarksFromPeriod(mainInfo.children[i].g.items, '2017-09-01T00:00:00', '2018-02-01T00:00:00', mainInfo.children[i].id.personId).then(data =>{
+            return API.getMarksFromPeriod(mainInfo.children[i].g.items, '2017-01-01T00:00:00', '2017-06-31T00:00:00', mainInfo.children[i].id.personId).then(data =>{
               const gMarks = [];
               data.forEach(elem => {
                 elem.data.forEach(mark => {
@@ -188,6 +189,8 @@ $('.partion__list').on('click', (ev) => {
         } else {
           infoBlock.show();
           articleBlock.show();
+          console.log('children', mainInfo.children);
+          activeChild = 0;
           renderData(activeSubject, mainInfo.children[activeChild][activeSubject].mark);
           setTimeout(() => {
             showData(mainInfo);
