@@ -14,9 +14,23 @@ let activeChild;
 let activeSubject = null;
 let activeColor = ['#235B92', '#16335F'];
 
+
+if (document.location.href.indexOf('access_token') > -1) {
+  Auth.auth(function() {
+    API.token = Auth.token;
+    //API.getUserInfo();
+    var path = window.location.pathname.substring(0, window.location.pathname.length);
+
+    history.pushState('', document.title, path);
+    window.location.reload();
+  });
+}
+
+
 // on select subject event evitter
 $('.partion__list').on('click', (ev) => {
   ev.preventDefault();
+  console.log('click');
   const target = $(ev.target);
   if (target.parent().hasClass('partion__item')) {
     activeSubject = target.closest('.partion__item').data('type');
@@ -32,8 +46,11 @@ $('.partion__list').on('click', (ev) => {
     const mainInfo = {
       children: []
     }; // initial main object  
-    Auth.auth(() => { 
-      API.init();   // аутентификация и инициализация апи
+    //Auth.auth(() => { 
+      //API.init();   // аутентификация и инициализация апи
+      
+      API.init();
+      //window.location.hash = url.split('?')[0];
       API.getUserInfo().then((res) => {
         const roles = API.getData().user.roles;
         const isParent = roles.find(role => {
@@ -202,7 +219,7 @@ $('.partion__list').on('click', (ev) => {
       }).catch(error => {
         console.log(error);
       });
-    });
+    //});
   }
 });
 

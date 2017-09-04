@@ -31,7 +31,6 @@ var Auth = {
           url += appOptions.scope + '&redirect_uri=' + appOptions.redirectUrl;
           //var item = window.open(url, 'Авторизация', 'width=600,height=500,location=no');
           window.location.href = url;
-          //window.close(item);
         }
 
       }
